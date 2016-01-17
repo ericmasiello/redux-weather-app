@@ -15,9 +15,11 @@ import reducers from './reducers';
  * they act as a gatekeeper between action creators and reducers
  */
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const store = createStoreWithMiddleware(reducers);
+window.store = store;
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <App />
   </Provider>
   , document.querySelector('.container'));
